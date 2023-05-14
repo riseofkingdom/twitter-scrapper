@@ -1,0 +1,14 @@
+consumer_key = '3t1JyiwCVgdnzhHOkHdYjUo4Y'
+consumer_secret = 'M4hHc4xXORWxAuzIcx6JHre9mCZHXNO2HFedLVx07kUv05kDTx'
+access_token = '1142793606039654400-lBKxznw1ZWxbBlmTpfD1ELnTEaiJp1'
+access_secret = '63XC4NQdDH35JW8IpQDTlCWXhCQt1wuKObmA35v3hPyXq'
+tweetsPerQry = 100
+maxTweets = 1000000
+hashtag = "#mencatatindonesia"
+
+mydb = mysql.connector.connect(
+  host="103.145.227.123",
+  user="satupin1",
+  passwd="Cl100299!@",
+  database="satupin1_twitterScrapper"
+)
