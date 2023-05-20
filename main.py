@@ -2,6 +2,7 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+import clipboard
 
 
 PATH = "C:\\Users\\DevOps\\Documents\\Project Cuan\\Reza Tanjung Thesis\\Scrapper\\chromedriver.exe"
@@ -26,58 +27,87 @@ log_in.click()
 
 # Search item and fetch it
 time.sleep(8)
+# search_box = driver.find_element(
+#     By.XPATH, "//input[@data-testid='SearchBox_Search_Input']"
+# )
+# search_box.send_keys("bankBCA \uD83D\uDE01")
+# search_box.send_keys(Keys.ENTER)
+
+
+clipboard.copy("😃")
 search_box = driver.find_element(
     By.XPATH, "//input[@data-testid='SearchBox_Search_Input']"
 )
 search_box.send_keys("bankBCA")
+search_box.send_keys(Keys.CONTROL + "v")
+
+
 search_box.send_keys(Keys.ENTER)
 
 time.sleep(3)
-people = driver.find_element(By.XPATH, "//span[contains(text(),'People')]")
-people.click()
+# people = driver.find_element(By.XPATH, "//span[contains(text(),'People')]")
+# people.click()
 
+# time.sleep(3)
+# profile = driver.find_element(
+#     By.XPATH,
+#     "//*[@id='react-root']/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/section/div/div/div[1]/div/div/div/div/div[2]/div[1]/div[1]/div/div[1]/a/div/div[1]/span",
+# )
+# profile.click()
+
+# time.sleep(3)
+
+
+# articles = driver.find_element(By.XPATH, "//div[@data-testid='tweetText']")
+# articles.click()
+# UserTag = driver.find_element(By.XPATH, "//div[@data-testid='User-Name']").text
+# TimeStamp = driver.find_element(By.XPATH, "//time").get_attribute("datetime")
 time.sleep(3)
-profile = driver.find_element(
-    By.XPATH,
-    "//*[@id='react-root']/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/section/div/div/div[1]/div/div/div/div/div[2]/div[1]/div[1]/div/div[1]/a/div/div[1]/span",
-)
-profile.click()
-
-time.sleep(3)
-
-UserTag = driver.find_element(By.XPATH, "//div[@data-testid='User-Name']").text
-TimeStamp = driver.find_element(By.XPATH, "//time").get_attribute("datetime")
 Tweet = driver.find_element(By.XPATH, "//div[@data-testid='tweetText']").text
+element = driver.find_element(By.XPATH, "//*[@id='id__2pd458tnk6l']/img")
+title = element.get_atribute("title")
+# print(UserTag)
+print(Tweet)
+# print(Emoji)
+print(title)
+
+# Reply = driver.find_element(By.XPATH, "//div[@data-testid='reply']").text
 
 
-Tweets = []
-articles = driver.find_elements(By.XPATH, "//article[@data-testid='tweet']")
-while True:
-    for article in articles:
-        Tweet = driver.find_element(By.XPATH, "//div[@data-testid='tweetText']").text
-        Tweets.append(Tweet)
-        print(Tweet)
-        driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
-        time.sleep(3)
+# print(Reply)
 
-    articles = driver.find_elements(By.XPATH, "//article[@data-testid='tweet']")
-    Tweets2 = list(set(Tweets))
-    if len(Tweets2) > 5:
-        break
+# Tweets = []
+# Replys = []
+# articles = driver.find_elements(By.XPATH, "//article[@data-testid='tweet']")
+# while True:
+#     for article in articles:
+#         Tweet = driver.find_element(By.XPATH, "//div[@data-testid='tweetText']").text
+#         Tweets.append(Tweet)
+#         print(Tweet)
+#         driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
+#         time.sleep(3)
 
-import pandas as pd
+#     articles = driver.find_elements(By.XPATH, "//article[@data-testid='tweet']")
+#     Tweets2 = list(set(Tweets))
+#     if len(Tweets2) > 5:
+#         break
 
-df = pd.DataFrame(zip(Tweets), columns=["Tweets"])
+# import pandas as pd
+#     private String createdBy;
+#     private ZonedDateTime createdAt;
+#     private String updatedBy;
+#     private ZonedDateTime updatedAt;
+# df = pd.DataFrame(zip(Tweets), columns=["Tweets"])
 
-df.head()
+# df.head()
 
-df.to_excel(r"D:\Learnerea\Tables\tweets_live.xlsx", index=False)
+# df.to_excel(r"D:\Learnerea\Tables\tweets_live.xlsx", index=False)
 
-import os
+# import os
 
-os.system('start "excel" "D:\Learnerea\Tables\\tweets_live.xlsx"')
+# os.system('start "excel" "D:\Learnerea\Tables\\tweets_live.xlsx"')
 
 
-print(len(Tweets))
-UserTags = []
-TimeStamps = []
+# print(len(Tweets))
+# UserTags = []
+# TimeStamps = []
